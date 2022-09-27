@@ -36,9 +36,9 @@ public class controller {
         return "start Auth-topic";
     }
 
-    @GetMapping("/start/authTopic4")
-    public String startAuthTopic4(@RequestBody Subscriber subscriber) throws IOException {
-        authTopicProducer.publishToTopic(subscriber);
-        return "start Auth-topic";
-    }
+//    @GetMapping("/start/authTopic4")
+//    public String startAuthTopic4(@RequestBody Subscriber subscriber) throws IOException {
+//        authTopicProducer.publishToTopic(subscriber);
+//        return "start Auth-topic";
+//    }
 }

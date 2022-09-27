@@ -107,7 +107,7 @@ public class ReadingDataService {
         for (FullRecord ele : list) {
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             String json = ow.writeValueAsString(ele);
-            authTopicProducer.publishToTopic(ele.getSubscriber());
+            authTopicProducer.publishToTopic(ele);
             System.out.println(json);
         }
     }
