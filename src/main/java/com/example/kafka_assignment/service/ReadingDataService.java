@@ -21,7 +21,10 @@ public class ReadingDataService {
 
     @Autowired
     AuthTopicProducer authTopicProducer;
+    @Autowired
+    SubscriberProducer subscriberProducer;
 
+    //reading data from txt file and sending message to kafka by calling publishToTopic method
     public void readFromInputStream() throws IOException {
         File file = new File("src/main/resources/HealthAuth-20220909.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
@@ -107,8 +110,14 @@ public class ReadingDataService {
         for (FullRecord ele : list) {
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             String json = ow.writeValueAsString(ele);
+            //calling method to send message to kafka
             authTopicProducer.publishToTopic(ele);
             System.out.println(json);
         }
+    }
+
+    //splitting the data receive from Auth-Topic
+    public void splitData(FullRecord fullRecord){
+        subscriberProducer.publishToTopic(fullRecord.getSubscriber());
     }
 }
