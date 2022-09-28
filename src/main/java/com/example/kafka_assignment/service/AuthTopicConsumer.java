@@ -10,11 +10,8 @@ public class AuthTopicConsumer {
     @Autowired
     ReadingDataService readingDataService;
 
-    @KafkaListener(topics="Auth-Topic", groupId="mygroup")
+    @KafkaListener(topics = "Auth-Topic", groupId = "mygroup")
     public void consumeFromTopic(FullRecord fullRecord) {
-
-        //sending data for splitting it
-        readingDataService.splitData(fullRecord);
-        System.out.println("Consummed message from Auth-Topic = "+fullRecord);
+        System.out.println("Consummed message from Auth-Topic = " + fullRecord);
     }
 }

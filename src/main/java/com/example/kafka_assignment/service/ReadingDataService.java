@@ -1,9 +1,6 @@
 package com.example.kafka_assignment.service;
 
-import com.example.kafka_assignment.entity.Case;
-import com.example.kafka_assignment.entity.FullRecord;
-import com.example.kafka_assignment.entity.Patient;
-import com.example.kafka_assignment.entity.Subscriber;
+import com.example.kafka_assignment.entity.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +18,8 @@ public class ReadingDataService {
 
     @Autowired
     AuthTopicProducer authTopicProducer;
-    @Autowired
-    SubscriberProducer subscriberProducer;
+//    @Autowired
+//    SubscriberProducer subscriberProducer;
 
     //reading data from txt file and sending message to kafka by calling publishToTopic method
     public void readFromInputStream() throws IOException {
@@ -90,7 +87,7 @@ public class ReadingDataService {
                     break;
 
                 case "SVC":
-                    com.example.kafka_assignment.entity.Service service = new com.example.kafka_assignment.entity.Service(
+                    Services service = new Services(
                             ch,
                             st.substring(3, 19).trim(),
                             st.substring(19, 35).trim(),
@@ -116,8 +113,4 @@ public class ReadingDataService {
         }
     }
 
-    //splitting the data receive from Auth-Topic
-    public void splitData(FullRecord fullRecord){
-        subscriberProducer.publishToTopic(fullRecord.getSubscriber());
-    }
 }

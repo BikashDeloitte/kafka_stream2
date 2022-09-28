@@ -15,7 +15,7 @@ public class AuthTopicProducer {
     private KafkaTemplate<String, FullRecord> kafkaJson;
 
     public void publishToTopic(FullRecord fullRecord) {
-        this.kafkaJson.send(topic,"0",fullRecord);
+        this.kafkaJson.send(topic, "KafkaTemplate", fullRecord);
     }
 
 }

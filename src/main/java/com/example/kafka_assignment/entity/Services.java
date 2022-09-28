@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Service {
+public class Services {
     //SVC
     @JsonIgnore
     private String recordType;
