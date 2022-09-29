@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Case {
+public class Cases {
     //CAS
     @JsonIgnore
     private String recordType;

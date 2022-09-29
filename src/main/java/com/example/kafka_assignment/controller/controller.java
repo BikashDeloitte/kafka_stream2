@@ -16,7 +16,9 @@ public class controller {
 
     @GetMapping("/start/authTopic3")
     public String startAuthTopic3() throws IOException {
-        readFromInputStream.readFromInputStream();
+        readFromInputStream.readFromInputStream("src/main/resources/HealthAuth-20220909.txt");
+        readFromInputStream.readFromInputStream("src/main/resources/HealthAuth-20220912.txt");
+        readFromInputStream.readFromInputStream("src/main/resources/HealthAuth-20220915.txt");
         return "start Auth-topic";
     }
 

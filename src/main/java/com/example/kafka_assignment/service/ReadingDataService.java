@@ -22,8 +22,8 @@ public class ReadingDataService {
 //    SubscriberProducer subscriberProducer;
 
     //reading data from txt file and sending message to kafka by calling publishToTopic method
-    public void readFromInputStream() throws IOException {
-        File file = new File("src/main/resources/HealthAuth-20220909.txt");
+    public void readFromInputStream(String path) throws IOException {
+        File file = new File(path);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String st;
         String ch = "";
@@ -73,7 +73,7 @@ public class ReadingDataService {
                     break;
 
                 case "CAS":
-                    Case cases = new Case(
+                    Cases cases = new Cases(
                             ch,
                             st.substring(3, 19).trim(),
                             st.substring(19, 35).trim(),

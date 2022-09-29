@@ -10,6 +10,6 @@ import lombok.*;
 public class FullRecord {
     private Subscriber subscriber;
     private Patient patient;
-    private Case cases;
+    private Cases cases;
     private Services service;
 }

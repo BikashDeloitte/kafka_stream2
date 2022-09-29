@@ -19,8 +19,8 @@ import org.springframework.stereotype.Service;
 public class KStreamProducer {
     public static final String subscriber = "subscriber";
     public static final String patient = "patient";
-    public static final String cases = "case";
-    public static final String services = "service";
+    public static final String cases = "cases";
+    public static final String services = "services";
 
 
     //json serde
@@ -36,9 +36,9 @@ public class KStreamProducer {
         }
     }
 
-    public class CaseSerde extends Serdes.WrapperSerde<Case> {
+    public class CaseSerde extends Serdes.WrapperSerde<Cases> {
         public CaseSerde() {
-            super(new JsonSerializer<>(), new JsonDeserializer<>(Case.class));
+            super(new JsonSerializer<>(), new JsonDeserializer<>(Cases.class));
         }
     }
 
@@ -53,7 +53,7 @@ public class KStreamProducer {
 
         KStream<String, Subscriber> subscriberKStream = fullRecordKStream.map((k, v) -> new KeyValue<>("KStream", v.getSubscriber()));
         KStream<String, Patient> patientKStream = fullRecordKStream.map((k, v) -> new KeyValue<>("KStream", v.getPatient()));
-        KStream<String, Case> caseKStream = fullRecordKStream.map((k, v) -> new KeyValue<>("KStream", v.getCases()));
+        KStream<String, Cases> caseKStream = fullRecordKStream.map((k, v) -> new KeyValue<>("KStream", v.getCases()));
         KStream<String, Services> servicesKStream = fullRecordKStream.map((k, v) -> new KeyValue<>("KStream", v.getService()));
 
         //adding Produced.with() as it don't have Serde after conversion
